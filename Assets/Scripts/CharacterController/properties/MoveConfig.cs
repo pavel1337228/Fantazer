@@ -7,6 +7,8 @@ public class MoveConfig : ScriptableObject
 {
     public bool VisibleCursor;
     public float MovementSpeed;
+    public float RunSpeed;
     public float AngularSpeed;
     public float Gravity;
+    public float JumpForce;
 }

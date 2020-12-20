@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 093c5f1b119b141a79de0d6753df4fe9, type: 3}
   m_Name: MoveConfig
   m_EditorClassIdentifier: 
-  VisibleCursor: 1
+  VisibleCursor: 0
   MovementSpeed: 2.5
+  RunSpeed: 2.5
   AngularSpeed: 200
-  Gravity: 2
+  Gravity: 3
+  JumpForce: 1
