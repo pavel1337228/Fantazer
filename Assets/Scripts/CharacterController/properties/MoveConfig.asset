@@ -9,17 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce1927f5f6b2544fab8155079a75adca, type: 3}
-  m_Name: Camera Config
+  m_Script: {fileID: 11500000, guid: 093c5f1b119b141a79de0d6753df4fe9, type: 3}
+  m_Name: MoveConfig
   m_EditorClassIdentifier: 
-  TurnSmooth: 0.02
-  PivotSpeed: 15
-  YRotSpeed: 15
-  XRotSpeed: 15
-  MinAngle: -35
-  MaxAngle: 50
-  NormalZ: -2
-  NormalX: 1
-  AimZ: -1
-  AimX: 0.4
-  NormalY: 3.4
+  VisibleCursor: 1
+  MovementSpeed: 2.5
+  AngularSpeed: 200
+  Gravity: 2
