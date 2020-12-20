@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(CharacterController))]
+[RequireComponent(typeof(Animator))]
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class PlayerMovement : MonoBehaviour
 
 
     private CharacterController _controller;
+    private Animator _anim;
     
     private Vector3 _direction;
 
@@ -25,6 +27,7 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         _controller = GetComponent<CharacterController>();
+        _anim = GetComponent<Animator>();
 
         Cursor.visible = _moveConfig.VisibleCursor;
     }
@@ -33,15 +36,16 @@ public class PlayerMovement : MonoBehaviour
     {
         CharacterMove();
         CharacterRotation();
+        PlayAnimation();
     }
 
     public void CharacterMove()
     {
+        _horizontal = Input.GetAxis("Horizontal");
+        _vertical = Input.GetAxis("Vertical");
+
         if (_controller.isGrounded)
         {
-            _horizontal = Input.GetAxis("Horizontal");
-            _vertical = Input.GetAxis("Vertical");
-
             _direction = transform.TransformDirection(_horizontal, 0.0f, _vertical).normalized;
         }
 
@@ -61,5 +65,11 @@ public class PlayerMovement : MonoBehaviour
             _look = Quaternion.LookRotation(target);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, _look, Speed);
         }
+    }
+
+    private void PlayAnimation()
+    {
+        _anim.SetFloat("Vertical", _vertical);
+        _anim.SetFloat("Horizontal", _horizontal);
     }
 }
