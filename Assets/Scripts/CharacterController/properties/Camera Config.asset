@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce1927f5f6b2544fab8155079a75adca, type: 3}
   m_Name: Camera Config
   m_EditorClassIdentifier: 
-  TurnSmooth: 0.02
+  TurnSmooth: 0
   PivotSpeed: 4
   YRotSpeed: 5
   XRotSpeed: 5
