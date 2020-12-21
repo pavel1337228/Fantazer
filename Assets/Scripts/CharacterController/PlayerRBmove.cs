@@ -6,7 +6,7 @@ public class PlayerRBmove : MonoBehaviour
 {
     [SerializeField] private Transform _camera;
     [SerializeField] private float _speed = 1f;
-    [SerializeField] private float _runSpeed;
+    [SerializeField] private float _runSpeed = 0.5f;
     [SerializeField] private MoveConfig _moveConfig;
 
     private Animator _anim;
@@ -35,14 +35,6 @@ public class PlayerRBmove : MonoBehaviour
         PlayAnimation();
         CharacterRotation();
         CameraChanging();
-
-        float speed = _run * _runSpeed + _speed;
-        float angle;
-        if (_horizontal != 0 && _vertical != 0)
-        {
-            angle = _horizontal * 45f;
-            transform.rotation = Quaternion.Euler(0f, angle, 0f);
-        }
     }
 
     //Moving
@@ -54,7 +46,7 @@ public class PlayerRBmove : MonoBehaviour
 
         if (_run != 0)
         {
-            _rb.drag = 3.5f;
+            _rb.drag = 3.2f;
         }
         else
         {
@@ -63,8 +55,7 @@ public class PlayerRBmove : MonoBehaviour
 
         float speed = _run * _runSpeed + _speed;
 
-        _rb.AddForce((transform.forward * _vertical) * speed / Time.deltaTime);
-        //(transform.right * _horizontal) +
+        _rb.AddForce(((transform.right * _horizontal) + (transform.forward * _vertical)) * speed / Time.deltaTime);
     }
 
     public void CharacterRotation()
