@@ -13,7 +13,7 @@ public class PlayerMovement : MonoBehaviour
     private float _vertical, _horizontal, _run;
     private bool idle => _horizontal == 0f && _vertical == 0f;
     private const float DISTANCE_OFFSET_CAMERA = 5f;
-
+    public CameraConfig sc;
 
     private CharacterController _controller;
     private Animator _anim;
@@ -28,8 +28,9 @@ public class PlayerMovement : MonoBehaviour
     {
         _controller = GetComponent<CharacterController>();
         _anim = GetComponent<Animator>();
-
         Cursor.visible = _moveConfig.VisibleCursor;
+
+        flag = false;
     }
 
     private void Update()
@@ -37,7 +38,61 @@ public class PlayerMovement : MonoBehaviour
         CharacterMove();
         CharacterRotation();
         PlayAnimation();
+        CameraChenging();
     }
+    //-1.5
+    public bool flag; public bool flag1;
+
+    private void CameraChenging()
+    {
+        //ChengePivotX
+        if (Input.GetKeyDown(KeyCode.V))
+        {
+            if (flag == false)
+            {
+                flag = true;
+            }
+            else
+            {
+                flag = false;
+            }
+
+        }
+        
+        if (flag == true)
+        {
+            sc.NormalX = -0.3f;
+        }
+        else
+        {
+            sc.NormalX = 0.3f;
+        }
+        //ChengePivotZ
+
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            if (flag1 == false)
+            {
+                flag1 = true;
+            }
+            else
+            {
+                flag1 = false;
+            }
+
+        }
+
+        if (flag1 == true)
+        {
+            sc.NormalZ = -3f;
+        }
+        else
+        {
+            sc.NormalZ = -1.5f;
+        }
+        //ChengePivotZ
+    }
+
 
     public void CharacterMove()
     {
