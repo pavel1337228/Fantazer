@@ -51,7 +51,17 @@ public class PlayerRBmove : MonoBehaviour
         _vertical = Input.GetAxis("Vertical");
         _run = Input.GetAxis("Run");
 
-        Ray Grounded = new Ray(rs.transform.position, Vector3.down);
+        Ray Grounded = new Ray(transform.position, Vector3.down);
+        RaycastHit GroundedIs;
+
+        if (Physics.Raycast(Grounded, out GroundedIs, _shootline))
+        {
+            Debug.DrawLine(Grounded.origin, GroundedIs.point, Color.yellow);
+        }
+        else
+        {
+            Debug.DrawLine(Grounded.origin, Grounded.origin + Grounded.direction * 1, Color.yellow);
+        }
 
         Ray ray = new Ray(rs.transform.position, Vector3.down);
         Ray raystep = new Ray(re.transform.position, transform.forward);

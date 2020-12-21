@@ -86,7 +86,6 @@ AnimatorState:
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 6655671899178243203}
-  - {fileID: 8937923708112644663}
   m_StateMachineBehaviours: []
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
@@ -272,15 +271,9 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
-  - m_Name: Weapon
-    m_Type: 4
-    m_DefaultFloat: 0
-    m_DefaultInt: 0
-    m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
-    m_Name: All
+    m_Name: Base Layer
     m_StateMachine: {fileID: 1608168672182956354}
     m_Mask: {fileID: 0}
     m_Motions: []
@@ -308,8 +301,8 @@ BlendTree:
     m_DirectBlendParameter: Vertical
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: -203655887218126122, guid: 4e739194670c34aaeae92d68db5b4ceb, type: 3}
-    m_Threshold: 0.09523811
+    m_Motion: {fileID: -203655887218126122, guid: 867928588c78bc54bb525ea8fbf62cce, type: 3}
+    m_Threshold: 0.07142858
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1
     m_CycleOffset: 0
@@ -317,7 +310,7 @@ BlendTree:
     m_Mirror: 0
   - serializedVersion: 2
     m_Motion: {fileID: -203655887218126122, guid: bafea6161c943461a9a394e26a654cb8, type: 3}
-    m_Threshold: 0.19047622
+    m_Threshold: 0.14285716
     m_Position: {x: 1, y: 0}
     m_TimeScale: 1
     m_CycleOffset: 0
@@ -325,7 +318,7 @@ BlendTree:
     m_Mirror: 0
   - serializedVersion: 2
     m_Motion: {fileID: -203655887218126122, guid: 5582e662a017f44bca16821733836b0d, type: 3}
-    m_Threshold: 0.28571433
+    m_Threshold: 0.21428575
     m_Position: {x: 2, y: 0}
     m_TimeScale: 1
     m_CycleOffset: 0
@@ -334,7 +327,7 @@ BlendTree:
   m_BlendParameter: Vertical
   m_BlendParameterY: Horizontal
   m_MinThreshold: 0
-  m_MaxThreshold: 0.28571433
+  m_MaxThreshold: 0.21428575
   m_UseAutomaticThresholds: 1
   m_NormalizedBlendValues: 0
   m_BlendType: 2
@@ -345,7 +338,7 @@ AnimatorStateMachine:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: All
+  m_Name: Base Layer
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: -6189859764018423562}
@@ -353,9 +346,6 @@ AnimatorStateMachine:
   - serializedVersion: 1
     m_State: {fileID: 5972323984406374481}
     m_Position: {x: 280, y: 200, z: 0}
-  - serializedVersion: 1
-    m_State: {fileID: 7753882428931741984}
-    m_Position: {x: 520, y: 110, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
