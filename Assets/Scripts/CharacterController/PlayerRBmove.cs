@@ -57,6 +57,14 @@ public class PlayerRBmove : MonoBehaviour
         {
             Debug.DrawLine(ray.origin, hit.point, Color.red);
             _shootdistance = hit.distance;
+
+            if ((_shootdistance > 0.72f) | (_shootdistance < 0.88f))
+            {
+                float f = _shootline - _shootdistance;
+                _rb.AddForce((transform.up * _horizontal));
+
+            }
+
         }
         else
         {
