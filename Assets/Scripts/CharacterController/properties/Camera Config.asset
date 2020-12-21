@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: Camera Config
   m_EditorClassIdentifier: 
   TurnSmooth: 0.02
-  PivotSpeed: 5
+  PivotSpeed: 4
   YRotSpeed: 5
   XRotSpeed: 5
   MinAngle: -35
   MaxAngle: 50
   NormalZ: -1.5
-  NormalX: 0.25
+  NormalX: 0.3
   AimZ: -1
   AimX: 0.4
   NormalY: 1.8
