@@ -12,14 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce1927f5f6b2544fab8155079a75adca, type: 3}
   m_Name: Camera Config
   m_EditorClassIdentifier: 
-  TurnSmooth: 0.01
-  PivotSpeed: 4
+  TurnSmooth: 0.02
+  PivotSpeed: 5
   YRotSpeed: 5
   XRotSpeed: 5
   MinAngle: -35
   MaxAngle: 50
   NormalZ: -1.5
-  NormalX: 0.3
+  NormalX: 0.25
   AimZ: -1
   AimX: 0.4
   NormalY: 1.8

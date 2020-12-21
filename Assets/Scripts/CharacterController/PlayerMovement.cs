@@ -13,7 +13,7 @@ public class PlayerMovement : MonoBehaviour
     private float _vertical, _horizontal, _run;
     private bool idle => _horizontal == 0f && _vertical == 0f;
     private const float DISTANCE_OFFSET_CAMERA = 5f;
-    public CameraConfig sc;
+
 
     private CharacterController _controller;
     private Animator _anim;
@@ -28,9 +28,8 @@ public class PlayerMovement : MonoBehaviour
     {
         _controller = GetComponent<CharacterController>();
         _anim = GetComponent<Animator>();
-        Cursor.visible = _moveConfig.VisibleCursor;
 
-        flag = false;
+        Cursor.visible = _moveConfig.VisibleCursor;
     }
 
     private void Update()
@@ -38,6 +37,7 @@ public class PlayerMovement : MonoBehaviour
         CharacterMove();
         CharacterRotation();
         PlayAnimation();
+<<<<<<< HEAD
         CameraChanging();
     }
     //-1.5
@@ -93,6 +93,9 @@ public class PlayerMovement : MonoBehaviour
         //ChengePivotZ
     }
 
+=======
+    }
+>>>>>>> parent of 89400ff... Update
 
     public void CharacterMove()
     {
