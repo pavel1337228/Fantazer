@@ -35,6 +35,14 @@ public class PlayerRBmove : MonoBehaviour
         PlayAnimation();
         CharacterRotation();
         CameraChanging();
+
+        float speed = _run * _runSpeed + _speed;
+        float angle;
+        if (_horizontal != 0 && _vertical != 0)
+        {
+            angle = _horizontal * 45f;
+            transform.rotation = Quaternion.Euler(0f, angle, 0f);
+        }
     }
 
     //Moving
@@ -55,7 +63,8 @@ public class PlayerRBmove : MonoBehaviour
 
         float speed = _run * _runSpeed + _speed;
 
-        _rb.AddForce(((transform.right * _horizontal) + (transform.forward * _vertical)) * speed / Time.deltaTime);
+        _rb.AddForce((transform.forward * _vertical) * speed / Time.deltaTime);
+        //(transform.right * _horizontal) +
     }
 
     public void CharacterRotation()
