@@ -130,6 +130,7 @@ public class PlayerRBmove : MonoBehaviour
         float horizontal = _run * _horizontal + _horizontal;
         float vertical = _run * _vertical + _vertical;
 
+        _anim.SetTrigger("Weapon");
         _anim.SetFloat("Vertical", vertical);
         _anim.SetFloat("Horizontal", horizontal);
     }
