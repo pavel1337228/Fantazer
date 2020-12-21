@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 2035111234}
-  m_IndirectSpecularColor: {r: 130.92877, g: 162.21216, b: 214.72275, a: 1}
+  m_IndirectSpecularColor: {r: 131.16855, g: 162.52502, b: 215.10977, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1718,7 +1718,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CamTransform: {fileID: 1297650284}
   Pivot: {fileID: 1001656496}
-  Character: {fileID: 0}
+  Character: {fileID: 3424260507164709864}
   MTransform: {fileID: 1737809236}
   CharacterStatus: {fileID: 11400000, guid: ff058ae29693f4f18ab6a9494b1ae5af, type: 2}
   CameraConfig: {fileID: 11400000, guid: 87c9699dcc416467394ac19c0f6597a9, type: 2}
@@ -2083,7 +2083,7 @@ Animator:
   m_GameObject: {fileID: 3429098251173966810}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: ffdfcb810f2918b4f8fe9f917f07bc78, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2ba12a88b42184fcfaa4271f6b031f76, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
