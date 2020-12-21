@@ -19,6 +19,7 @@ public class PlayerRBmove : MonoBehaviour
     public CameraConfig sc;
 
     public GameObject rs;
+    public GameObject re;
 
     private Quaternion _look;
 
@@ -41,6 +42,7 @@ public class PlayerRBmove : MonoBehaviour
 
     [SerializeField] private int _shootline = 1;
     [SerializeField] private float _shootdistance;
+    [SerializeField] private float _shootstepdistance;
 
     //Moving
     private void FixedUpdate()
@@ -50,30 +52,47 @@ public class PlayerRBmove : MonoBehaviour
         _run = Input.GetAxis("Run");
 
         Ray ray = new Ray(rs.transform.position, Vector3.down);
+        Ray raystep = new Ray(re.transform.position, transform.forward);
         RaycastHit hit;
+        RaycastHit hitstep;
+
+        if (Physics.Raycast(raystep, out hitstep, _shootline))
+        {
+            Debug.DrawLine(raystep.origin, hitstep.point, Color.yellow);
+        }
+        else
+        {
+            Debug.DrawLine(raystep.origin, raystep.origin + raystep.direction * 1, Color.green);
+        }
 
         if (Physics.Raycast (ray, out hit, _shootline))
         {
+
             Debug.DrawLine(ray.origin, hit.point, Color.red);
+
             _shootdistance = hit.distance;
+            _shootstepdistance = hitstep.distance;
 
             float hoverForce = 5.0f;
-            float hoverDamp = 0.1f;
+            float hoverDamp = 0.5f;
             float hoverHeight = 30f;
 
-            if ((_shootdistance > 0.72f) & (_shootdistance < 0.999f))
+            if ((_speed != 0))
             {
-                float hoverError = hoverHeight - hit.distance;
-                float upwardSpeed = _rb.velocity.y;
-                //float f = _shootline - _shootdistance;
-                float lift = hoverError * hoverForce - upwardSpeed * hoverDamp;
-                _rb.AddForce((lift * Vector3.up));
+                if (((_shootdistance > 0.72f) & (_shootdistance < 0.89f)) & ((_shootstepdistance > 0f) & (_shootstepdistance < 0.225f)))
+                {
+                    float hoverError = hoverHeight - hit.distance;
+                    float upwardSpeed = _rb.velocity.y;
+                    //float f = _shootline - _shootdistance;
+                    float lift = hoverError * hoverForce - upwardSpeed * hoverDamp;
+                    _rb.AddForce((lift * Vector3.up));
+                }
             }
 
         }
         else
         {
-            Debug.DrawLine(ray.origin, ray.origin + ray.direction * 100, Color.green);
+            Debug.DrawLine(ray.origin, ray.origin + ray.direction * 1, Color.green);
         }
 
         if (_run != 0)

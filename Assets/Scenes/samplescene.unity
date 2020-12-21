@@ -735,6 +735,36 @@ Transform:
   m_Father: {fileID: 153173885}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &736099591
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 736099592}
+  m_Layer: 0
+  m_Name: RayStepForward
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &736099592
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 736099591}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.022, z: 0.2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3424260507164709864}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &752580993
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1139,7 +1169,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1281095334}
   m_Layer: 0
-  m_Name: RayStart
+  m_Name: RayStayForward
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1784,7 +1814,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1888577304}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.3611455, y: 1.54, z: -2.1930299}
+  m_LocalPosition: {x: 3.3611455, y: 0.835, z: -2.1930299}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1737809236}
@@ -2446,6 +2476,7 @@ Transform:
   - {fileID: 3423883439406097582}
   - {fileID: 3430598580873101518}
   - {fileID: 1281095334}
+  - {fileID: 736099592}
   m_Father: {fileID: 1888577305}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3412,8 +3443,10 @@ MonoBehaviour:
   _moveConfig: {fileID: 11400000, guid: 3d9f65c942b0e4447b30c9aadc2e7369, type: 2}
   sc: {fileID: 11400000, guid: 87c9699dcc416467394ac19c0f6597a9, type: 2}
   rs: {fileID: 1281095333}
+  re: {fileID: 736099591}
   _shootline: 1
   _shootdistance: 0
+  _shootstepdistance: 0
   flag: 0
   flag1: 0
 --- !u!136 &3429098251173966813
