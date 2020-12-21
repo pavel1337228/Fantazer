@@ -46,11 +46,11 @@ public class PlayerRBmove : MonoBehaviour
 
         if (_run != 0)
         {
-            _rb.drag = 3.2f;
+            _rb.drag = 3.5f;
         }
         else
         {
-            _rb.drag = 2.5f;
+            _rb.drag = 2.8f;
         }
 
         float speed = _run * _runSpeed + _speed;
