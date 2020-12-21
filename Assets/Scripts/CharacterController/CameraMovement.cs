@@ -22,7 +22,7 @@ public class CameraMovement : MonoBehaviour
     static public float LookAngle;
     public float TitlAngle;
 
-    private void Update()
+    private void LateUpdate()
     {
         FixedTick();
     }

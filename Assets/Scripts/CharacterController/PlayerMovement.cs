@@ -38,12 +38,12 @@ public class PlayerMovement : MonoBehaviour
         CharacterMove();
         CharacterRotation();
         PlayAnimation();
-        CameraChenging();
+        CameraChanging();
     }
     //-1.5
     public bool flag; public bool flag1;
 
-    private void CameraChenging()
+    private void CameraChanging()
     {
         //ChengePivotX
         if (Input.GetKeyDown(KeyCode.V))
