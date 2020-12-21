@@ -18,6 +18,9 @@ public class PlayerRBmove : MonoBehaviour
     private const float DISTANCE_OFFSET_CAMERA = 5f;
     public CameraConfig sc;
 
+    public GameObject rs;
+    public GameObject re;
+
     private Quaternion _look;
 
     private Vector3 _targetRotate => _camera.forward * DISTANCE_OFFSET_CAMERA;
@@ -37,12 +40,27 @@ public class PlayerRBmove : MonoBehaviour
         CameraChanging();
     }
 
+    [SerializeField] private int _shootline = 1;
+
     //Moving
     private void FixedUpdate()
     {
         _horizontal = Input.GetAxis("Horizontal");
         _vertical = Input.GetAxis("Vertical");
         _run = Input.GetAxis("Run");
+
+        Ray ray = new Ray(rs.transform.position, Vector3.down);
+        RaycastHit hitInfo;
+        float _shootdistance = hitInfo.distance;
+
+        if (Physics.Raycast (ray, out hitInfo, _shootline))
+        {
+            Debug.DrawLine(ray.origin, hitInfo.point, Color.red);
+        }
+        else
+        {
+            Debug.DrawLine(ray.origin, ray.origin + ray.direction * 100, Color.green);
+        }
 
         if (_run != 0)
         {
@@ -56,6 +74,9 @@ public class PlayerRBmove : MonoBehaviour
         float speed = _run * _runSpeed + _speed;
 
         _rb.AddForce(((transform.right * _horizontal) + (transform.forward * _vertical)) * speed / Time.deltaTime);
+
+
+
     }
 
     public void CharacterRotation()
