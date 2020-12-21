@@ -41,6 +41,7 @@ public class PlayerRBmove : MonoBehaviour
     }
 
     [SerializeField] private int _shootline = 1;
+    [SerializeField] private float _shootdistance;
 
     //Moving
     private void FixedUpdate()
@@ -50,12 +51,12 @@ public class PlayerRBmove : MonoBehaviour
         _run = Input.GetAxis("Run");
 
         Ray ray = new Ray(rs.transform.position, Vector3.down);
-        RaycastHit hitInfo;
-        float _shootdistance = hitInfo.distance;
+        RaycastHit hit;
 
-        if (Physics.Raycast (ray, out hitInfo, _shootline))
+        if (Physics.Raycast (ray, out hit, _shootline))
         {
-            Debug.DrawLine(ray.origin, hitInfo.point, Color.red);
+            Debug.DrawLine(ray.origin, hit.point, Color.red);
+            _shootdistance = hit.distance;
         }
         else
         {
