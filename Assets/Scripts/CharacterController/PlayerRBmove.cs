@@ -19,7 +19,6 @@ public class PlayerRBmove : MonoBehaviour
     public CameraConfig sc;
 
     public GameObject rs;
-    public GameObject re;
 
     private Quaternion _look;
 
@@ -58,11 +57,17 @@ public class PlayerRBmove : MonoBehaviour
             Debug.DrawLine(ray.origin, hit.point, Color.red);
             _shootdistance = hit.distance;
 
-            if ((_shootdistance > 0.72f) | (_shootdistance < 0.88f))
-            {
-                float f = _shootline - _shootdistance;
-                _rb.AddForce((transform.up * _horizontal));
+            float hoverForce = 5.0f;
+            float hoverDamp = 0.1f;
+            float hoverHeight = 30f;
 
+            if ((_shootdistance > 0.72f) & (_shootdistance < 0.999f))
+            {
+                float hoverError = hoverHeight - hit.distance;
+                float upwardSpeed = _rb.velocity.y;
+                //float f = _shootline - _shootdistance;
+                float lift = hoverError * hoverForce - upwardSpeed * hoverDamp;
+                _rb.AddForce((lift * Vector3.up));
             }
 
         }
