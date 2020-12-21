@@ -6,7 +6,7 @@ public class PlayerRBmove : MonoBehaviour
 {
     [SerializeField] private Transform _camera;
     [SerializeField] private float _speed = 1f;
-    [SerializeField] private float _runSpeed = 0.5f;
+    [SerializeField] private float _runSpeed;
     [SerializeField] private MoveConfig _moveConfig;
 
     private Animator _anim;
@@ -50,7 +50,7 @@ public class PlayerRBmove : MonoBehaviour
         }
         else
         {
-            _rb.drag = 2.8f;
+            _rb.drag = 2.5f;
         }
 
         float speed = _run * _runSpeed + _speed;
