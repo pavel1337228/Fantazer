@@ -38,6 +38,7 @@ public class PlayerMovement : MonoBehaviour
         CharacterRotation();
         PlayAnimation();
 <<<<<<< HEAD
+<<<<<<< HEAD
         CameraChanging();
     }
     //-1.5
@@ -93,6 +94,9 @@ public class PlayerMovement : MonoBehaviour
         //ChengePivotZ
     }
 
+=======
+    }
+>>>>>>> parent of 89400ff... Update
 =======
     }
 >>>>>>> parent of 89400ff... Update
