@@ -8,6 +8,7 @@ public class PlayerRBmove : MonoBehaviour
     [SerializeField] private float _speed = 1f;
     [SerializeField] private float _runSpeed;
     [SerializeField] private MoveConfig _moveConfig;
+    [SerializeField] private bool _IsWeaponing;
 
     private Animator _anim;
     private Rigidbody _rb;
@@ -142,6 +143,14 @@ public class PlayerRBmove : MonoBehaviour
         float horizontal = _run * _horizontal + _horizontal;
         float vertical = _run * _vertical + _vertical;
 
+        if (_IsWeaponing == true)
+        {
+            _anim.SetTrigger("Weapon");
+        }
+        else
+        {
+            _anim.ResetTrigger("Weapon");
+        }
         _anim.SetFloat("Vertical", vertical);
         _anim.SetFloat("Horizontal", horizontal);
     }
