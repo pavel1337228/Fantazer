@@ -1216,8 +1216,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _camera: {fileID: 1297650284}
   _speed: 1
+  _runSpeed: 1.2
   _moveConfig: {fileID: 11400000, guid: 3d9f65c942b0e4447b30c9aadc2e7369, type: 2}
   sc: {fileID: 11400000, guid: 87c9699dcc416467394ac19c0f6597a9, type: 2}
+  flag: 0
+  flag1: 0
 --- !u!136 &2089140285
 CapsuleCollider:
   m_ObjectHideFlags: 0
