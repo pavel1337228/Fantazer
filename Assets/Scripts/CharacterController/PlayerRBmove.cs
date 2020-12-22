@@ -19,9 +19,6 @@ public class PlayerRBmove : MonoBehaviour
     private const float DISTANCE_OFFSET_CAMERA = 5f;
     public CameraConfig sc;
 
-    public GameObject rs;
-    public GameObject re;
-
     private Quaternion _look;
 
     private Vector3 _targetRotate => _camera.forward * DISTANCE_OFFSET_CAMERA;
@@ -41,29 +38,45 @@ public class PlayerRBmove : MonoBehaviour
         CameraChanging();
     }
 
-    [SerializeField] private int _shootline = 1;
-    [SerializeField] private float _shootdistance;
-    [SerializeField] private float _shootstepdistance;
 
     //Moving
     private void FixedUpdate()
+    {
+        GroundedCheck();
+        RaySteps();
+        Running();
+    }
+
+    private void Running()
     {
         _horizontal = Input.GetAxis("Horizontal");
         _vertical = Input.GetAxis("Vertical");
         _run = Input.GetAxis("Run");
 
-        Ray Grounded = new Ray(transform.position, Vector3.down);
-        RaycastHit GroundedIs;
-
-        if (Physics.Raycast(Grounded, out GroundedIs, _shootline))
+        if (_run != 0)
         {
-            Debug.DrawLine(Grounded.origin, GroundedIs.point, Color.yellow);
+            _rb.drag = 3.5f;
         }
         else
         {
-            Debug.DrawLine(Grounded.origin, Grounded.origin + Grounded.direction * 1, Color.yellow);
+            _rb.drag = 2.5f;
         }
 
+        float speed = _run * _runSpeed + _speed;
+
+        _rb.AddForce(((transform.right * _horizontal) + (transform.forward * _vertical)) * speed / Time.deltaTime);
+
+    }
+
+    [SerializeField] private int _shootline = 1;
+    [SerializeField] private float _shootdistance;
+    [SerializeField] private float _shootstepdistance;
+
+    public GameObject rs;
+    public GameObject re;
+
+    private void RaySteps()
+    {
         Ray ray = new Ray(rs.transform.position, Vector3.down);
         Ray raystep = new Ray(re.transform.position, transform.forward);
         RaycastHit hit;
@@ -98,7 +111,10 @@ public class PlayerRBmove : MonoBehaviour
                     float upwardSpeed = _rb.velocity.y;
                     //float f = _shootline - _shootdistance;
                     float lift = hoverError * hoverForce - upwardSpeed * hoverDamp;
-                    _rb.AddForce((lift * Vector3.up));
+                    if (isGrounded == true)
+                    {
+                        _rb.AddForce((lift * Vector3.up));
+                    }
                 }
             }
 
@@ -107,22 +123,36 @@ public class PlayerRBmove : MonoBehaviour
         {
             Debug.DrawLine(ray.origin, ray.origin + ray.direction * 1, Color.green);
         }
+    }
 
-        if (_run != 0)
+    [SerializeField] private float _shootcheck;
+    public GameObject gr;
+    public bool isGrounded;
+
+    private void GroundedCheck()
+    {
+        Ray Grounded = new Ray(gr.transform.position, Vector3.down);
+        RaycastHit GroundedIs;
+
+        if (Physics.Raycast(Grounded, out GroundedIs, _shootline))
         {
-            _rb.drag = 3.5f;
+            Debug.DrawLine(Grounded.origin, GroundedIs.point, Color.yellow);
+            _shootcheck = GroundedIs.distance;
+
+            if (_shootcheck < 0.975f & _shootcheck > 0.9f)
+            {
+                isGrounded = true;
+            }
+            else
+            {
+                isGrounded = false;
+            }
+
         }
         else
         {
-            _rb.drag = 2.5f;
+            Debug.DrawLine(Grounded.origin, Grounded.origin + Grounded.direction * 1, Color.green);
         }
-
-        float speed = _run * _runSpeed + _speed;
-
-        _rb.AddForce(((transform.right * _horizontal) + (transform.forward * _vertical)) * speed / Time.deltaTime);
-
-
-
     }
 
     public void CharacterRotation()
