@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: MoveConfig
   m_EditorClassIdentifier: 
   VisibleCursor: 0
-  MovementSpeed: 2.5
+  MovementSpeed: 2
   RunSpeed: 2.5
   AngularSpeed: 200
   Gravity: 3
