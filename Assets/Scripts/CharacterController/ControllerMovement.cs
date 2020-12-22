@@ -8,7 +8,7 @@ public class ControllerMovement : MonoBehaviour
     [SerializeField] private Transform _camera;
     [SerializeField] private MoveConfig _moveConfig;
     [SerializeField] private CameraConfig _cameraConfig;
-    [SerializeField] private bool _IsWeaponing;
+    [SerializeField] private bool _isWeaponing;
 
     private Animator _anim;
 
@@ -50,11 +50,18 @@ public class ControllerMovement : MonoBehaviour
 
         _direction.y -= 2f * Time.deltaTime; //gravity
 
-        float speed = _moveConfig.MovementSpeed + _run * _moveConfig.RunSpeed;
-
-        Vector3 dir = _direction * speed * Time.deltaTime;
-
-        _controller.Move(dir);
+        if (_isWeaponing)
+        {
+            float speed = (_moveConfig.MovementSpeed - 0.5f) + _run * _moveConfig.RunSpeed;
+            Vector3 dir = _direction * speed * Time.deltaTime;
+            _controller.Move(dir);
+        }
+        else
+        {
+            float speed = _moveConfig.MovementSpeed + _run * _moveConfig.RunSpeed;
+            Vector3 dir = _direction * speed * Time.deltaTime;
+            _controller.Move(dir);
+        }
     }
 
     public void CharacterRotation()
@@ -75,7 +82,7 @@ public class ControllerMovement : MonoBehaviour
         float horizontal = _run * _horizontal + _horizontal;
         float vertical = _run * _vertical + _vertical;
 
-        if (_IsWeaponing == true)
+        if (_isWeaponing == true)
         {
             _anim.SetTrigger("Weapon");
         }
@@ -125,7 +132,6 @@ public class ControllerMovement : MonoBehaviour
             {
                 flag1 = false;
             }
-
         }
 
         if (flag1 == true)
@@ -135,6 +141,20 @@ public class ControllerMovement : MonoBehaviour
         else
         {
             _cameraConfig.NormalZ = -1.5f;
+        }
+
+
+        //takeWeapon
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            if (_isWeaponing)
+            {
+                _isWeaponing = false;
+            }
+            else
+            {
+                _isWeaponing = true;
+            }
         }
     }
 }
